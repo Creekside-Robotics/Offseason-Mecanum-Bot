@@ -48,6 +48,12 @@ public class Drivetrain extends SubsystemBase {
     return new Translation2d(fieldOrientedDriveAngle.getCos()*driveSpeed, fieldOrientedDriveAngle.getSin()*driveSpeed);
   }
 
+  /**
+   * Use this method to set the output drivetrain
+   * @param joystickVector Translation2d vector {[-1, 1], [-1, 1]} setting the direction and speed in WPILIB field/robot relative corrdinate system https://docs.wpilib.org/en/stable/docs/software/advanced-controls/geometry/coordinate-systems.html.
+   * @param rotationalVelocity Rotational velocity of robot [-1, 1], counter-clockwise is positive.
+   * @param fieldOriented Sets whether or not to use field oriented drive.
+   */
   public void setDriveOutput(Translation2d joystickVector, double rotationalVelocity, boolean fieldOriented){
     Translation2d driveVector;
     if(fieldOriented){
