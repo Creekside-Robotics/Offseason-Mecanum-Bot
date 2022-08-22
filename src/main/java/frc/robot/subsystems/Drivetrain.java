@@ -63,4 +63,9 @@ public class Drivetrain extends SubsystemBase {
     }
     this.driveGroup.driveCartesian(driveVector.getX(), -driveVector.getY(), -rotationalVelocity);
   }
+
+  /**Resets the gyro to a heading of zero */
+  public void resetGyro(){
+    this.gyro.reset();
+  }
 }
