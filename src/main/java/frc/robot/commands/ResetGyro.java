@@ -13,8 +13,6 @@ public class ResetGyro extends InstantCommand {
 
   public ResetGyro(Drivetrain drivetrain) {
     this.drivetrain = drivetrain;
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(drivetrain);
   }
 
   // Called when the command is initially scheduled.
