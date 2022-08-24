@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
@@ -34,6 +35,13 @@ public class ManualDrive extends CommandBase {
 
     if (this.joystick.getRawButtonPressed(Constants.fieldOrientedDriveButton)) {  // only toggle when the button is pressed and not held
       this.fieldOriented = !this.fieldOriented;  // invert the toggle
+
+      SmartDashboard.putString(  // update the dashboard
+        "Drive Mode",
+        this.fieldOriented ? "Field Oriented" : "Relative"
+      );
+      // If this doesn't work right away, try running `SmartDashboard.updateValues` in the robot's `periodic`
+
     }
 
     this.drivetrain.setDriveOutput(
