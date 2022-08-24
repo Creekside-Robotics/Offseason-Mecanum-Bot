@@ -17,4 +17,6 @@ public final class Constants {
     public static int rightRearID = 1;
     public static int leftFrontID = 2;
     public static int leftRearID = 3;
+
+    public static int fieldOrientedDriveButton = 5;
 }
