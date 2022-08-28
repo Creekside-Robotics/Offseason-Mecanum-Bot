@@ -26,10 +26,10 @@ public class Drivetrain extends SubsystemBase {
   ADXRS450_Gyro gyro;
 
   public Drivetrain() {
-    rightFront = new CANSparkMax(Constants.rightFrontID, CANSparkMax.MotorType.kBrushless);
-    rightRear = new CANSparkMax(Constants.rightRearID, CANSparkMax.MotorType.kBrushless);
-    leftFront = new CANSparkMax(Constants.leftFrontID, CANSparkMax.MotorType.kBrushless);
-    leftRear = new CANSparkMax(Constants.leftRearID, CANSparkMax.MotorType.kBrushless);
+    rightFront = new CANSparkMax(Constants.rightFrontID, CANSparkMax.MotorType.kBrushed);
+    rightRear = new CANSparkMax(Constants.rightRearID, CANSparkMax.MotorType.kBrushed);
+    leftFront = new CANSparkMax(Constants.leftFrontID, CANSparkMax.MotorType.kBrushed);
+    leftRear = new CANSparkMax(Constants.leftRearID, CANSparkMax.MotorType.kBrushed);
     driveGroup = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
     gyro = new ADXRS450_Gyro();
   }
