@@ -8,10 +8,8 @@ import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.wpilibj.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -29,6 +27,7 @@ public class Drivetrain extends SubsystemBase {
     rightFront = new CANSparkMax(Constants.rightFrontID, CANSparkMax.MotorType.kBrushed);
     rightRear = new CANSparkMax(Constants.rightRearID, CANSparkMax.MotorType.kBrushed);
     leftFront = new CANSparkMax(Constants.leftFrontID, CANSparkMax.MotorType.kBrushed);
+    leftFront.setInverted(true);
     leftRear = new CANSparkMax(Constants.leftRearID, CANSparkMax.MotorType.kBrushed);
     driveGroup = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
     gyro = new ADXRS450_Gyro();
