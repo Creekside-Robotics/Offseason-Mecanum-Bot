@@ -30,7 +30,7 @@ public class ManualDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Translation2d joystickVector = new Translation2d(this.joystick.getX(), this.joystick.getY());
+    Translation2d joystickVector = new Translation2d(-this.joystick.getY(), -this.joystick.getX());
     double rotationalVelocity = this.joystick.getTwist();
 
     if (this.joystick.getRawButtonPressed(Constants.fieldOrientedDriveButton)) {  // only toggle when the button is pressed and not held
