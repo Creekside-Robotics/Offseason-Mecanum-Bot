@@ -4,7 +4,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ManualDrive;
@@ -19,10 +22,11 @@ import frc.robot.subsystems.Drivetrain;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  Joystick joystick = new Joystick(1);
+  Joystick joystick = new Joystick(0);
 
   private Drivetrain drivetrain = new Drivetrain();
   private ResetGyro resetCommand = new ResetGyro(drivetrain);
+  private DoubleSolenoid piston = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 3, 4);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -39,7 +43,16 @@ public class RobotContainer {
   private void configureButtonBindings() {
     this.drivetrain.setDefaultCommand(new ManualDrive(this.drivetrain, this.joystick));
     var resetButton = new JoystickButton(joystick, 11);
+    var flagButton = new JoystickButton(joystick, 1);
     resetButton.whenPressed(this.resetCommand);
+    flagButton.whenPressed(() -> {
+      piston.set(Value.kForward);
+    });
+    flagButton.whenReleased(() -> {
+      piston.set(Value.kReverse);
+    });
+
+
   }
 
   /**
